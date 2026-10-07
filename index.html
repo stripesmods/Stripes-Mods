@@ -127,6 +127,31 @@
             50% { border-color: #ff1111; }
         }
 
+        .static-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 calc(15px + var(--beat-glow)) rgba(255, 10, 10, 0.8),
+                         0 0 calc(30px + var(--beat-glow)) rgba(255, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .site-description {
+            margin-top: 8px;
+            font-size: 1rem;
+            color: #b0b0bc;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 10, 10, 0.35);
+        }
+
         .links-container {
             width: 100%;
             max-width: 500px;
@@ -183,7 +208,10 @@
         <img src="151.png" alt="StripesVR Profile Picture" class="profile-pic">
 
         <div class="title-container">
-            <div class="typewriter-text" id="typewriter"></div>
+            <div class="static-title">
+                <div class="site-title">Stripes-Mods</div>
+                <div class="site-description">Mods Made By StripesMC</div>
+            </div>
         </div>
 
         <div class="links-container" id="menu-links">
@@ -226,37 +254,6 @@
         // Change song volume here (0.0 = Mute, 0.5 = 50% volume, 1.0 = 100% full volume)
         const DEFAULT_VOLUME = 0.05; 
         // ==========================================
-
-        const textArray = ["Stripes-Mods"];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typeSpeed = 150;  
-        const eraseSpeed = 100; 
-        const delayBetween = 2500; 
-        const typewriterElement = document.getElementById("typewriter");
-
-        function type() {
-            const currentText = textArray[textIndex];
-            if (isDeleting) {
-                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let nextActionSpeed = isDeleting ? eraseSpeed : typeSpeed;
-
-            if (!isDeleting && charIndex === currentText.length) {
-                nextActionSpeed = delayBetween; 
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                nextActionSpeed = 500; 
-            }
-            setTimeout(type, nextActionSpeed);
-        }
 
         const canvas = document.getElementById('lightning-canvas');
         const ctx = canvas.getContext('2d');
